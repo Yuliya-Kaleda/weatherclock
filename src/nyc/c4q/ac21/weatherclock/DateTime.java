@@ -12,6 +12,7 @@ public class DateTime {
     public static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("h:mm");
     public static final SimpleDateFormat TIME_FORMAT_SECS = new SimpleDateFormat("h:mm:ss");
     public static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:MM");
+    public static final SimpleDateFormat TIME_FORMAT_SECSHH = new SimpleDateFormat("HH:mm");
 
     /**
      * Formats a 'Calendar' object as a date.
@@ -51,6 +52,14 @@ public class DateTime {
         else
             return TIME_FORMAT.format(cal.getTime());
     }
+
+    public static String formatTimeH(Calendar cal) {
+        if (cal == null)
+            return null;
+        else
+            return TIME_FORMAT_SECSHH.format(cal.getTime());
+    }
+
 
     /**
      * Parses a date in "YYYY-MM-DD" format.
