@@ -10,6 +10,7 @@ import java.util.Calendar;
  */
 public class SunsetSunrise
 {
+
     public static Calendar getSunset()
     {
         URL url = HTTP.stringToURL("http://api.openweathermap.org/data/2.5/weather?q=New%20York,NY");
@@ -38,56 +39,62 @@ public class SunsetSunrise
         return DateTime.fromTimestamp(sunriseTimestamp);
     }
 
-    public static void printSunset(AnsiTerminal terminal)
+    public static void printSunset(AnsiTerminal terminal, int numCols, int numRows)
     {
         // Get sunset time for the current day.
         Calendar sunset = getSunset();
 
+        int xPosition = numCols;
+        int yPosition = numRows;
+
+
         String sunsetTime = DateTime.formatTime( sunset, false );
         terminal.setTextColor(AnsiTerminal.Color.YELLOW, false);
-        terminal.moveTo(40, 10);
-        terminal.write("SUNSET   " + sunsetTime);
-        terminal.moveTo(41, 10);
+        terminal.moveTo(yPosition-78, xPosition-150);
+        terminal.write("         SUNSET   " + sunsetTime);
+        terminal.moveTo(yPosition-79, xPosition-150);
         terminal.write(" ");
-        terminal.moveTo(42, 10);
+        terminal.moveTo(yPosition-80, xPosition-150);
         terminal.write("            @@@@@          ");
-        terminal.moveTo(43, 10);
+        terminal.moveTo(yPosition-81, xPosition-150);
         terminal.write("         @@@@@@@@@@@         ");
-        terminal.moveTo(44, 10);
+        terminal.moveTo(yPosition-82, xPosition-150);
         terminal.write("~~~~~~~@@@@@@@@@@@@@@@~~~~~~~~~~");
-        terminal.moveTo(45, 10);
+        terminal.moveTo(yPosition-83, xPosition-150);
         terminal.write("~      ~ ~~~ ~~~ ~~ ~~     ~ ");
-        terminal.moveTo(46, 10);
+        terminal.moveTo(yPosition-84, xPosition-150);
         terminal.write("   ~~    ~~ ~~ ~~ ~   ~~  ");
-        terminal.moveTo(47, 10);
+        terminal.moveTo(yPosition-85, xPosition-150);
         terminal.write("   ~       ~ ~~~ ~    ~  ");
 
     }
 
-    public static void printSunrise(AnsiTerminal terminal)
+    public static void printSunrise(AnsiTerminal terminal, int numCols, int numRows)
     {
         // Get sunrise time for the current day.
         Calendar sunrise = getSunrise();
 
+        int xPosition = numCols;
+        int yPosition = numRows;
+
         String sunriseTime = DateTime.formatTime(sunrise, false);
         terminal.setTextColor(AnsiTerminal.Color.YELLOW, false);
-        terminal.moveTo(40, 140);
-        terminal.write("    SUNRISE   " + sunriseTime);
-        terminal.moveTo(41, 140);
+        terminal.moveTo(yPosition-78, xPosition-40);
+        terminal.write("      SUNRISE   " + sunriseTime);
+        terminal.moveTo(yPosition-79, xPosition-40);
         terminal.write("               '        ");
-        terminal.moveTo(42, 140);
+        terminal.moveTo(yPosition-80, xPosition-40);
         terminal.write("             \\ | /     ");
-        terminal.moveTo(43, 140);
+        terminal.moveTo(yPosition-81, xPosition-40);
         terminal.write("        '--.;;;;;;;.--'");
-        terminal.moveTo(44, 140);
+        terminal.moveTo(yPosition-82, xPosition-40);
         terminal.write("       -===;;;;;;;;;===-");
-        terminal.moveTo(45, 140);
+        terminal.moveTo(yPosition-83, xPosition-40);
         terminal.write("        .--';;;;;;;'--.");
-        terminal.moveTo(46, 140);
+        terminal.moveTo(yPosition-84, xPosition-40);
         terminal.write("             / | \\ ");
-        terminal.moveTo(47, 140);
+        terminal.moveTo(yPosition-85, xPosition-40);
         terminal.write("               '     ");
-
     }
 }
 
