@@ -74,8 +74,6 @@ package nyc.c4q.ac21.weatherclock;
 //            terminal.moveTo(3, xPosition);
 //            terminal.write(time);
 //
-//            DateTime.pause(10.0);
-//
 //
 //            // Write the date in gray.
 //            String date = DateTime.formatDate(cal);

@@ -37,7 +37,7 @@ public class Main
         });
 
         // Clear the screen to black.
-        terminal.setBackgroundColor(AnsiTerminal.Color.BLACK);
+        terminal.setBackgroundColor(52);
         terminal.clear();
 
         // Don't show the cursor.
@@ -57,8 +57,15 @@ public class Main
             //Write quote
             Quote.writeQuote(terminal);
 
+
+            //position text printing
+            terminal.moveTo(43, 50);
+            terminal.setTextColor(0000);
+            terminal.write("LIVE THE LAST SECONDS OF THE MINUTE TO THE FULLEST!!!");
+
             //Write time
-           ClockPrinting.clockPrinting(user, cal, terminal, numCols, numRows);
+            int numCycles = 3;
+            ClockPrinting.clockPrinting(user, terminal, numCols, numRows, numCycles);
 
             //reset terminal to black clean display
             terminal.clear();
