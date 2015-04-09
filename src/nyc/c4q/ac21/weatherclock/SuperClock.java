@@ -73,7 +73,7 @@ package nyc.c4q.ac21.weatherclock;
 //            terminal.setTextColor(AnsiTerminal.Color.WHITE);
 //            terminal.moveTo(3, xPosition);
 //            terminal.write(time);
-//
+    //
 //
 //            // Write the date in gray.
 //            String date = DateTime.formatDate(cal);

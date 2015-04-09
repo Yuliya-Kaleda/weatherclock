@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * Created by July on 4/6/15.
+ * Created by YULIYA KALEDA on 4/6/15.
+ * print seconds
  */
 public class SecondsPrinting
 {

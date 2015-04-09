@@ -6,13 +6,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Created by July on 4/7/15.
+ * Created by YULIYA KALEDA on 4/7/15.
  */
 public class Quote
 {
     public static void writeQuote(AnsiTerminal terminal) throws FileNotFoundException
     {
-        File f = new File("/Users/July/Desktop/accesscode/weatherclock/src/nyc/c4q/ac21/weatherclock/Quotes");
+        File f = new File("./src/nyc/c4q/ac21/weatherclock/Quotes");
         Scanner scanner = new Scanner(f);
 
         // key - integer from 0 to number of quotes, value - quote
@@ -33,7 +33,7 @@ public class Quote
 
         //randomly choose a quote
         Random rand = new Random();
-        int n = rand.nextInt(6);
+        int n = rand.nextInt(14);
 
         //set the position to print quote
         terminal.moveTo(4, 45);

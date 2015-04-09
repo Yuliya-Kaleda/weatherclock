@@ -53,4 +53,11 @@ public class DST {
         return date.compareTo(dstStart) == 1 && date.compareTo(dstEnd) == -1;
     }
 
+    //Elvis edited DST
+    public static String dst (String words)
+    {
+        if(isDST(Calendar.getInstance()) == true) words = "DST is in effect";
+        else words = "DST is NOT in effect";
+        return words;
+    }
 }

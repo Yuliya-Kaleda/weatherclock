@@ -4,7 +4,8 @@ import java.util.Calendar;
 import java.util.Random;
 
 /**
- * Created by July on 4/5/15.
+ * Created by YULIYA KALEDA on 4/5/15.
+ * print time without seconds
  */
 public class ClockPrinting
 {
@@ -60,6 +61,7 @@ public class ClockPrinting
             // change a quote every minute
             if (seconds.equalsIgnoreCase("60")) {
                 Quote.writeQuote(terminal);
+                DateTime.pause(1.);
             }
 
             // time numbers will move for only  numCycles
@@ -268,7 +270,7 @@ public class ClockPrinting
                 else if(time.charAt(i) == '0')
                 {
                     terminal.moveTo(yPosition + 1, xPosition);
-                    terminal.write("     __  __       "+ coverLetters);
+                    terminal.write("     __  __         "+ coverLetters);
                     terminal.moveTo(yPosition + 2, xPosition);
                     terminal.write(" __ (__)(__) __   "+ coverLetters);
                     terminal.moveTo(yPosition + 3, xPosition);
