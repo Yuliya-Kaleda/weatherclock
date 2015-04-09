@@ -95,6 +95,7 @@ public class WeekDays {
             terminal.write("   ■     ■    ■  ■   ■  ■    ■       ■  ■    ■   ■   ■     ■    ");
             terminal.moveTo(yPosition + 5, xPosition);
             terminal.write("   ■     ■    ■  ■ ■ ■  ■     ■  ■ ■ ■  ■ ■ ■    ■   ■     ■    ");
+            terminal.setTextColor(AnsiTerminal.Color.YELLOW, true);
             terminal.write("YEAHH TODAY IS DEMO DAY");
         }
         else if(dayOfWeek == Calendar.FRIDAY)

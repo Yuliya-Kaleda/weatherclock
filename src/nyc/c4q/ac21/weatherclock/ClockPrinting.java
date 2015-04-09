@@ -60,7 +60,9 @@ public class ClockPrinting
 
             // change a quote every minute
             if (seconds.equalsIgnoreCase("60")) {
-                Quote.writeQuote(terminal);
+                Random ran = new Random();
+                int r = ran.nextInt(13);
+                Quote.writeQuote(terminal, r);
                 DateTime.pause(1.);
             }
 

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -59,19 +60,40 @@ public class Main
         // Don't show the cursor.
         terminal.hideCursor();
 
+
+        // Get sunset/sunrise time for the current day.
+        Calendar sunset = SunsetSunrise.getSunset();
+        Calendar sunrise = SunsetSunrise.getSunrise();
+
+        //a var to compare with the next mit to keep track of how often to change a quote(every minute)
+        int previousMin = 0;
+        int n = 5;
+
         while(true)
         {
             // Get the current date and time.
             Calendar cal = Calendar.getInstance();
 
             //Write sunset time
-            SunsetSunrise.printSunset(terminal, numCols, numRows);
+            SunsetSunrise.printSunset(sunset, terminal, numCols, numRows);
 
             //Write sunrise time
-            SunsetSunrise.printSunrise(terminal, numCols, numRows);
+            SunsetSunrise.printSunrise(sunrise, terminal, numCols, numRows);
 
             //Write quote
-            Quote.writeQuote(terminal);
+            // get the current minute
+            int currentMinute = cal.get(Calendar.MINUTE);
+
+            //check whether the the minute changed, if yes -> change quote
+            if (previousMin!=currentMinute) {
+                Random random = new Random();
+                int x = random.nextInt(13);
+                n = x;
+            }
+
+            // if not write the same quote
+            Quote.writeQuote(terminal, n);
+
 
 
             //position text printing
@@ -112,7 +134,13 @@ public class Main
             HashMap<Calendar, String> holidays = Holidays.getHolidays("National holiday");
             terminal.setTextColor(AnsiTerminal.Color.YELLOW);
             terminal.moveTo(23, xPosition - 3);
-            terminal.write("National Holiday: " + holidays.get(cal));
+            if (holidays.get(cal)!=null)
+            {
+                terminal.write("National Holiday: " + holidays.get(cal));
+            }
+            else {
+                terminal.write("Not a National Holiday!");
+            }
 
             //print the days of the week
             WeekDays.daysPrinting(cal, terminal, numCols, numRows);
@@ -188,6 +216,9 @@ public class Main
 
             DateTime.pause(5.0);
             terminal.clear();
+            previousMin = currentMinute;
+
+
             //DateTime.pause(1.0);
         }
     }

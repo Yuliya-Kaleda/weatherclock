@@ -31,7 +31,7 @@ public class SunsetSunrise
     public static Calendar getSunrise()
     {
         //get a JSON Object
-        URL url = HTTP.stringToURL("http://api.openweathermap.org/data/2.5/weather?q=New%20York,NY");
+        URL url = HTTP.stringToURL("http://api.openweathermap.org/data/2.5/weather?q=New%20York");
         String doc = HTTP.get(url);
         JSONObject obj = (JSONObject) JSONValue.parse(doc);
 
@@ -42,10 +42,8 @@ public class SunsetSunrise
         return DateTime.fromTimestamp(sunriseTimestamp);
     }
 
-    public static void printSunset(AnsiTerminal terminal, int numCols, int numRows)
+    public static void printSunset(Calendar sunset, AnsiTerminal terminal, int numCols, int numRows)
     {
-        // Get sunset time for the current day.
-        Calendar sunset = getSunset();
 
         String sunsetTime = DateTime.formatTime( sunset, false );
         terminal.setTextColor(AnsiTerminal.Color.YELLOW, false);
@@ -68,11 +66,9 @@ public class SunsetSunrise
 
     }
 
-    public static void printSunrise(AnsiTerminal terminal, int numCols, int numRows)
-    {
-        // Get sunrise time for the current day.
-        Calendar sunrise = getSunrise();
 
+    public static void printSunrise(Calendar sunrise, AnsiTerminal terminal, int numCols, int numRows)
+    {
 
         String sunriseTime = DateTime.formatTime(sunrise, false);
         terminal.setTextColor(AnsiTerminal.Color.YELLOW, false);

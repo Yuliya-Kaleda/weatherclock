@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Quote
 {
-    public static void writeQuote(AnsiTerminal terminal) throws FileNotFoundException
+    public static void writeQuote(AnsiTerminal terminal, int n) throws FileNotFoundException
     {
         File f = new File("./src/nyc/c4q/ac21/weatherclock/Quotes");
         Scanner scanner = new Scanner(f);
@@ -31,13 +31,11 @@ public class Quote
                 quotes.put(i, quotesArray[i]);
         }
 
-        //randomly choose a quote
-        Random rand = new Random();
-        int n = rand.nextInt(14);
-
         //set the position to print quote
         terminal.moveTo(4, 45);
         terminal.setTextColor(AnsiTerminal.Color.WHITE);
         terminal.write(quotes.get(n) + "!                                                    ");
+
+
     }
 }
